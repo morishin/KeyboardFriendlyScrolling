@@ -1,0 +1,7 @@
+platform :ios, '8.0'
+
+target 'KeyboardFriendlyScrollingExample' do
+  use_frameworks!
+  pod 'KeyboardFriendlyScrolling', :path => '../'
+end
+
