@@ -1,16 +1,28 @@
 import UIKit
 
-public protocol KeyboardFriendlyScrolling: class {
-    var keyboardFriendlyScrollView: UIScrollView { get }
-    var defaultContentInsets: UIEdgeInsets { get }
-    var keyboardObservers: [NSObjectProtocol] { get set }
-}
+public class KeyboardFriendlyScrollController {
+    private weak var viewController: UIViewController?
+    private let scrollView: UIScrollView
+    private let defaultContentInsets: UIEdgeInsets
 
-extension KeyboardFriendlyScrolling where Self: UIViewController {
-    public var defaultContentInsets: UIEdgeInsets { return .zero }
+    private var keyboardObservers: [NSObjectProtocol] = []
 
-    public func addKeyboardFriendlyScrollingObserver() {
-        removeKeyboardFriendlyScrollingObserver()
+    public init(viewController: UIViewController, scrollView: UIScrollView, defaultContentInsets: UIEdgeInsets = .zero) {
+        self.viewController = viewController
+        self.scrollView = scrollView
+        self.defaultContentInsets = defaultContentInsets
+    }
+
+    deinit {
+        removeObservers()
+    }
+
+    public func start() -> KeyboardFriendlyScrollController {
+        addObservers()
+        return self
+    }
+
+    private func addObservers() {
         let keyboardWasShownObserver = NotificationCenter.default.addObserver(forName: .UIKeyboardDidShow, object: nil, queue: .main) { [weak self] notification in
             self?.keyboardWasShown(notification)
         }
@@ -20,26 +32,27 @@ extension KeyboardFriendlyScrolling where Self: UIViewController {
         keyboardObservers = [keyboardWasShownObserver, keyboardWillBeHiddenObserver]
     }
 
-    public func removeKeyboardFriendlyScrollingObserver() {
+    private func removeObservers() {
         keyboardObservers.forEach { NotificationCenter.default.removeObserver($0) }
     }
 
     private func keyboardWasShown(_ notification: Notification) {
         guard let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let view = viewController?.view,
             let window = view.window
             else { return }
-        let scrollViewAbsoluteFrame = view.convert(keyboardFriendlyScrollView.frame, to: nil)
-        let overlapHeight =  scrollViewAbsoluteFrame.maxY - (window.bounds.height - keyboardFrame.height)
+        let scrollViewAbsoluteFrame = view.convert(scrollView.frame, to: nil)
+        let overlapHeight = scrollViewAbsoluteFrame.maxY - (window.bounds.height - keyboardFrame.height)
         if overlapHeight > 0 {
             var contentInsets = defaultContentInsets
             contentInsets.bottom += overlapHeight
-            keyboardFriendlyScrollView.contentInset = contentInsets
-            keyboardFriendlyScrollView.scrollIndicatorInsets = contentInsets
+            scrollView.contentInset = contentInsets
+            scrollView.scrollIndicatorInsets = contentInsets
         }
     }
 
     private func keyboardWillBeHidden(_ notification: Notification) {
-        keyboardFriendlyScrollView.contentInset = defaultContentInsets
-        keyboardFriendlyScrollView.scrollIndicatorInsets = defaultContentInsets
+        scrollView.contentInset = defaultContentInsets
+        scrollView.scrollIndicatorInsets = defaultContentInsets
     }
 }

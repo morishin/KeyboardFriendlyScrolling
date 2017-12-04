@@ -5,30 +5,23 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 
-Protocol extension for UIViewController to manage scroll view content insets depending on keyboard frame
+Manage scroll view content insets depending on keyboard frame
 
 ## Usage
 [Example](https://github.com/morishin/KeyboardFriendlyScrolling/tree/master/Example)
+
 ```swift
 import UIKit
 import KeyboardFriendlyScrolling
 
-class ViewController: UIViewController, KeyboardFriendlyScrolling {
+class ViewController: UIViewController {
+    private var keyboardFriendlyScrollController: KeyboardFriendlyScrollController?
+
     @IBOutlet private weak var scrollView: UIScrollView!
-
-    // MARK: KeyboardFriendlyScrolling
-
-    var keyboardObservers: [NSObjectProtocol] = []
-    var keyboardFriendlyScrollView: UIScrollView { return scrollView }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addKeyboardFriendlyScrollingObserver()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        removeKeyboardFriendlyScrollingObserver()
+        keyboardFriendlyScrollController = KeyboardFriendlyScrollController(viewController: self, scrollView: scrollView).start()
     }
 }
 

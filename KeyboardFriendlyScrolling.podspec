@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "KeyboardFriendlyScrolling"
-  s.version      = "1.0.0"
-  s.summary      = "Protocol extension for UIViewController to manage scroll view content insets depending on keyboard frame"
+  s.version      = "2.0.0"
+  s.summary      = "Manage scroll view content insets depending on keyboard frame"
   s.homepage     = "https://github.com/morishin/KeyboardFriendlyScrolling"
   s.author       = { "morishin" => "sntr92@gmail.com" }
   s.platform     = :ios

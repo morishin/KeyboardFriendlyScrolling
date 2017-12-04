@@ -1,5 +1,5 @@
 PODS:
-  - KeyboardFriendlyScrolling (1.0.0)
+  - KeyboardFriendlyScrolling (2.0.0)
 
 DEPENDENCIES:
   - KeyboardFriendlyScrolling (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  KeyboardFriendlyScrolling: 3169cad89582842d91cb84db74245e961206467b
+  KeyboardFriendlyScrolling: 667285c9486284bf90d640985fdc440f7f1b6ca8
 
 PODFILE CHECKSUM: a33f35ed4115e553034008a0f1d03a0fb9012323
 
