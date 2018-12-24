@@ -1,6 +1,6 @@
 # KeyboardFriendlyScrolling
 
-![Swift version](https://img.shields.io/badge/swift-4.0-orange.svg)
+![Swift version](https://img.shields.io/badge/swift-4.2-orange.svg)
 ![CocoaPods compatible](https://cocoapod-badges.herokuapp.com/v/KeyboardFriendlyScrolling/badge.png)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 

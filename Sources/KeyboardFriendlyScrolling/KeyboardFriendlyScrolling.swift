@@ -23,10 +23,10 @@ public class KeyboardFriendlyScrollController {
     }
 
     private func addObservers() {
-        let keyboardWasShownObserver = NotificationCenter.default.addObserver(forName: .UIKeyboardDidShow, object: nil, queue: .main) { [weak self] notification in
+        let keyboardWasShownObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidShowNotification, object: nil, queue: .main) { [weak self] notification in
             self?.keyboardWasShown(notification)
         }
-        let keyboardWillBeHiddenObserver = NotificationCenter.default.addObserver(forName: .UIKeyboardWillHide, object: nil, queue: .main) { [weak self] notification in
+        let keyboardWillBeHiddenObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { [weak self] notification in
             self?.keyboardWillBeHidden(notification)
         }
         keyboardObservers = [keyboardWasShownObserver, keyboardWillBeHiddenObserver]
@@ -37,7 +37,7 @@ public class KeyboardFriendlyScrollController {
     }
 
     private func keyboardWasShown(_ notification: Notification) {
-        guard let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+        guard let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let view = viewController?.view,
             let window = view.window
             else { return }
