@@ -100,7 +100,6 @@
 				5BD7E52D1FD25CDB006A2017 /* Frameworks */,
 				5BD7E52E1FD25CDB006A2017 /* Resources */,
 				A8C9B7EC27CA7ADC20D4F12C /* [CP] Embed Pods Frameworks */,
-				148E351A26E9D2F867BF871C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -158,21 +157,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		148E351A26E9D2F867BF871C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyboardFriendlyScrollingExample/Pods-KeyboardFriendlyScrollingExample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		61164D18DF5D0D9E129966B0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -360,7 +344,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.morishin.KeyboardFriendlyScrollingExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -375,7 +359,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.morishin.KeyboardFriendlyScrollingExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
