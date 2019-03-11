@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "KeyboardFriendlyScrolling"
-  s.version      = "2.0.1"
+  s.version      = "2.1.0"
   s.summary      = "Manage scroll view content insets depending on keyboard frame"
   s.homepage     = "https://github.com/morishin/KeyboardFriendlyScrolling"
   s.author       = { "morishin" => "sntr92@gmail.com" }
