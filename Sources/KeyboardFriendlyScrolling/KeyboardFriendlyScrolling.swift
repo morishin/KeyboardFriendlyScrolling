@@ -48,7 +48,7 @@ public class KeyboardFriendlyScrollController {
     }
 
     private func keyboardWasShown(_ notification: Notification) {
-        guard let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return assertionFailure() }
+        guard let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         currentState = .shown(keyboardFrame: keyboardFrame)
         adjustScrollViewInsets()
     }
@@ -61,7 +61,7 @@ public class KeyboardFriendlyScrollController {
     private func adjustScrollViewInsets() {
         switch currentState {
         case .shown(let keyboardFrame):
-            guard let view = viewController?.view, let window = view.window else { return assertionFailure() }
+            guard let view = viewController?.view, let window = view.window else { return }
             let scrollViewAbsoluteFrame = view.convert(scrollView.frame, to: nil)
             let overlapHeight = scrollViewAbsoluteFrame.maxY - (window.bounds.height - keyboardFrame.height)
             if overlapHeight > 0 {
